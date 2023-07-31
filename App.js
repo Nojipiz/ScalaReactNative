@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 
 if (__DEV__) {
-  module.exports = require("./target/scala-2.13/zarn-fastopt.js").app;
+  module.exports = require("./target/scala-2.13/scalareactnative-fastopt.js").app;
 } else {
   module.exports = () => {
     return <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
