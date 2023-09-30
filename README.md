@@ -1,8 +1,14 @@
 # Scala React Native
-This [template](https://github.com/shadaj/expo-template-scala) sets up a simple React Native application written in Scala through [Scala.js](https://www.scala-js.org), [Slinky](https://slinky.dev), and [Expo](https://expo.io).
+This [template](https://github.com/Nojipiz/ScalaReactNative) sets up a simple React Native application written in Scala through [Scala.js](https://www.scala-js.org), [Slinky](https://slinky.dev), and [Expo](https://expo.io), it's higly inspired in this [template](https://github.com/shadaj/expo-template-scala)
+
 
 ## Building Apps
-Once you've created your project, first compile your Scala code to JavaScript by running
+Once you've created your project, first install npm dependencies with:
+```
+npm i 
+```
+
+then compile your Scala code to JavaScript by running
 ```
 $ sbt fastOptJS
 ```
