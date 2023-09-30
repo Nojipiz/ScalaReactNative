@@ -10,17 +10,16 @@ import slinky.core.facade.ReactElement
 import typings.reactRouterNative.components._
 import _root_.screens.common.Styles
 import slinky.core.facade.Hooks._
-import jobs.HeavyJob
 
-@react object ZioScreen{
+@react object TaskScreen{
 
   case class Props(
     val times:Int,
     val updateTimes: Option[(Int) => Unit]
   )
 
-  def runTask(updateTimes:(Int) => Unit) = setTimeout(1){
-    HeavyJob.run( update = updateTimes )
+  def runTask(updateTimes:() => Unit) = {
+    updateTimes()
   }
 
   val component = FunctionalComponent[Props] { props =>
@@ -31,19 +30,19 @@ import jobs.HeavyJob
         fontSize = 15,
         fontWeight ="bold"
       )
-    )(s"ZIO Status"),
+    )(s"Task Status"),
 
     if(isLoading){
       Text("Loading ...")
     }
     else{
-      Text(s"Random number: ${props.times}")
+      Text(s"Times executed: ${props.times}")
     },
 
     Button(
       onPress = () => { 
         setIsLoading(true)
-        runTask(props.updateTimes.get)
+        runTask(() => {props.updateTimes.get(props.times + 1)} )
         setIsLoading(false)
       },
       title = "Run!"

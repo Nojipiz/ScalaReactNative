@@ -9,18 +9,18 @@ import slinky.native._
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.literal
 import typings.reactRouterNative.components.{Route, Link, NativeRouter, Routes}
-import screens.ZioScreen
+import screens.TaskScreen
 import screens.common._
 
 @react object AppNavigator {
   type Props = Unit
-  case class State(val amountTimesZIO: Int)
+  case class State(val amountTimes: Int)
 
   val component = FunctionalComponent[Props]{ props => 
-    val (state, updateState) = useState(State(amountTimesZIO = 0))
+    val (state, updateState) = useState(State(amountTimes = 0))
 
-    val updateTimesZIO = (number:Int) => {
-      updateState(state.copy(amountTimesZIO = number))
+    val updateTimes = (number:Int) => {
+      updateState(state.copy(amountTimes = number))
     }
 
     NativeRouter(
@@ -36,9 +36,9 @@ import screens.common._
               )
             )(
               NavigationButton(
-                title = "ZIO", 
-                route =  "/zio", 
-                notifications = Some(state.amountTimesZIO),
+                title = "Task", 
+                route =  "/task", 
+                notifications = Some(state.amountTimes),
               ),
               NavigationButton(title = "Home", route =  "/"),
               NavigationButton(title = "Requests", route =  "/requests")
@@ -48,11 +48,11 @@ import screens.common._
               .path("/")
               .element(Text("Home")),
               Route.PathRouteProps()
-                .path("/zio")
+                .path("/task")
                 .element(
-                  ZioScreen(
-                    times = state.amountTimesZIO,
-                    updateTimes = Some(updateTimesZIO)
+                  TaskScreen(
+                    times = state.amountTimes,
+                    updateTimes = Some(updateTimes)
                   )
                 ),
               Route.PathRouteProps()

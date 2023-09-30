@@ -4,7 +4,6 @@ import scala.scalajs.js
 import scala.scalajs.LinkingInfo
 import scala.scalajs.js.annotation.{JSExportTopLevel, JSImport}
 
-import zio._
 import slinky.native.AppRegistry
 import slinky.hot
 import java.time._
