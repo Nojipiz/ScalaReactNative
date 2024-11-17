@@ -16,51 +16,44 @@ import screens.common._
   type Props = Unit
   case class State(val amountTimes: Int)
 
-  val component = FunctionalComponent[Props]{ props => 
-    val (state, updateState) = useState(State(amountTimes = 0))
-
-    val updateTimes = (number:Int) => {
-      updateState(state.copy(amountTimes = number))
-    }
+  val component = FunctionalComponent[Props] { props =>
 
     NativeRouter(
-      View(style = literal(
-        marginTop = 25,
-        padding = 10,
-        flex = 1,
-        ))(
-          View(
-            style = literal(
-              flexDirection = "row",
-              justifyContent = "space-around",
-              )
-            )(
-              NavigationButton(
-                title = "Task", 
-                route =  "/task", 
-                notifications = Some(state.amountTimes),
-              ),
-              NavigationButton(title = "Home", route =  "/"),
-              NavigationButton(title = "Requests", route =  "/requests")
-            ),
-          Routes(
-            Route.IndexRouteProps()
-              .path("/")
-              .element(Text("Home")),
-              Route.PathRouteProps()
-                .path("/task")
-                .element(
-                  TaskScreen(
-                    times = state.amountTimes,
-                    updateTimes = Some(updateTimes)
-                  )
-                ),
-              Route.PathRouteProps()
-                .path("/requests")
-                .element(Text("Request"))
-              )
-            )
+      View(style =
+        literal(
+          marginTop = 25,
+          padding = 10,
+          flex = 1
+        )
+      )(
+        View(
+          style = literal(
+            flexDirection = "row",
+            justifyContent = "space-around"
           )
+        )(
+          NavigationButton(
+            title = "Task",
+            route = "/task"
+          ),
+          NavigationButton(title = "Home", route = "/"),
+          NavigationButton(title = "Requests", route = "/requests")
+        ),
+        Routes(
+          Route
+            .IndexRouteProps()
+            .path("/")
+            .element(Text("Homee")),
+          Route
+            .PathRouteProps()
+            .path("/task")
+            .element(Text("Task")),
+          Route
+            .PathRouteProps()
+            .path("/requests")
+            .element(Text("Request"))
+        )
+      )
+    )
   }
 }
-

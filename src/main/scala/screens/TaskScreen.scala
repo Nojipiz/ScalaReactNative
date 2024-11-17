@@ -11,43 +11,27 @@ import typings.reactRouterNative.components._
 import _root_.screens.common.Styles
 import slinky.core.facade.Hooks._
 
-@react object TaskScreen{
+@react object TaskScreen {
 
   case class Props(
-    val times:Int,
-    val updateTimes: Option[(Int) => Unit]
+      val times: Int,
+      val updateTimes: Option[(Int) => Unit]
   )
 
-  def runTask(updateTimes:() => Unit) = {
-    updateTimes()
+  def runTask(updateTimes: () => Unit) = {
+    // updateTimes()
   }
 
   val component = FunctionalComponent[Props] { props =>
     val (isLoading, setIsLoading) = useState(false)
 
     View(style = Styles.centerContent)(
-      Text(style = literal(
-        fontSize = 15,
-        fontWeight ="bold"
-      )
-    )(s"Task Status"),
-
-    if(isLoading){
-      Text("Loading ...")
-    }
-    else{
-      Text(s"Times executed: ${props.times}")
-    },
-
-    Button(
-      onPress = () => { 
-        setIsLoading(true)
-        runTask(() => {props.updateTimes.get(props.times + 1)} )
-        setIsLoading(false)
-      },
-      title = "Run!"
-    )
+      Text(style =
+        literal(
+          fontSize = 15,
+          fontWeight = "bold"
+        )
+      )(s"Task Status")
     )
   }
 }
-
