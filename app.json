@@ -4,6 +4,7 @@
     "description": "A template setting up Expo with Slinky and Scala.js",
     "slug": "scala_react_native",
     "privacy": "public",
+    "newArchEnabled": true,
     "platforms": [
       "ios",
       "android"
